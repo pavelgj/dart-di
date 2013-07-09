@@ -32,7 +32,8 @@ class _TypeProvider implements Provider {
           'for ${getSymbolName(classMirror.simpleName)} typedef!'));
     }
 
-    MethodMirror ctor = classMirror.constructors.values.first;
+    MethodMirror ctor = classMirror.constructors.values.
+        firstWhere((MethodMirror mm) => mm.constructorName == new Symbol(''));
 
     resolveArgument(ParameterMirror p) {
       return getInstanceBySymbol(p.type.simpleName);
